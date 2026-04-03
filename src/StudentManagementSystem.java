@@ -8,9 +8,58 @@ public class StudentManagementSystem {
     static int count = 0;
 
     public static void main(String[] args) {
-        addStudent();
+
+        showMenu();
 
         System.out.println("Count value in main " + count);
+    }
+
+
+    // APP MENU
+
+    public static void showMenu(){
+
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+
+            System.out.println("\n =========== Welcome to Student Management System ============== ");
+            System.out.println("1. Add Student");
+            System.out.println("2. View Students");
+            System.out.println("3. Search Student");
+            System.out.println("4. Delete Student");
+            System.out.println("5. Exit");
+
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+
+
+            switch (choice) {
+                case 1:
+                    addStudent();
+                    break;
+
+                case 2:
+                    System.out.println("View Students is pending.");
+                    break;
+
+                case 3:
+                    System.out.println("Search Student is pending.");
+                    break;
+
+                case 4:
+                    System.out.println("Delete Student is pending.");
+                    break;
+
+                case 5:
+                    System.out.println("Thank you visit again.");
+                    return;
+
+                default:
+                    System.out.println("Invalid Choice.");
+            }
+
+        }
+
     }
 
     static void addStudent(){
@@ -54,6 +103,27 @@ public class StudentManagementSystem {
             }
         }
         names[count] = tempName;
+
+
+        int tempAge = 0;
+        while(true){
+            System.out.println("Enter student's age: ");
+
+            if(sc.hasNextInt()){
+                tempAge = sc.nextInt();
+
+                if(validAge(tempAge)){
+                    break;
+                } else {
+                    System.out.println("Invalid Id, please try again.");
+                }
+
+            } else {
+                System.out.println("Please enter a valid number.");
+                sc.next();
+            }
+        }
+        age[count] = tempAge;
 
         count++;
         System.out.println("count => " + count);
