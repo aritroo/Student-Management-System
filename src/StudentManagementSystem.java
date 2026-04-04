@@ -39,7 +39,7 @@ public class StudentManagementSystem {
                     break;
 
                 case 2:
-                    System.out.println("View Students is pending.");
+                    viewStudents();
                     break;
 
                 case 3:
@@ -151,5 +151,22 @@ public class StudentManagementSystem {
 
     static boolean validAge(int age){
         return age > 0 && age < 30;
+    }
+
+    static void viewStudents(){
+        if(count == 0){
+            System.out.println("No Students found. Please add student records.");
+            return;
+        }
+
+        System.out.println("+----------+----------------------+----------+");
+        System.out.printf("| %-8s | %-20s | %-8s |\n", "ID", "Name", "Age");
+        System.out.println("+----------+----------------------+----------+");
+
+        for (int i = 0; i < count; i++) {
+            System.out.printf("| %-8d | %-20s | %-8d |\n", ids[i], names[i], age[i]);
+        }
+
+        System.out.println("+----------+----------------------+----------+");
     }
 }
