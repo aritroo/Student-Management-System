@@ -7,11 +7,14 @@ public class StudentManagementSystem {
     static int[] age = new int[100];
     static int count = 0;
 
+    static Scanner sc = new Scanner(System.in);
+
+    static int searchIndex = 0;
+
     public static void main(String[] args) {
 
         showMenu();
-
-        System.out.println("Count value in main " + count);
+        
     }
 
 
@@ -19,7 +22,7 @@ public class StudentManagementSystem {
 
     public static void showMenu(){
 
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
         while (true) {
 
             System.out.println("\n =========== Welcome to Student Management System ============== ");
@@ -43,7 +46,7 @@ public class StudentManagementSystem {
                     break;
 
                 case 3:
-                    System.out.println("Search Student is pending.");
+                    searchStudents();
                     break;
 
                 case 4:
@@ -64,7 +67,7 @@ public class StudentManagementSystem {
 
     static void addStudent(){
 
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
 
         System.out.println("You have selected to add student...... ");
 
@@ -168,5 +171,25 @@ public class StudentManagementSystem {
         }
 
         System.out.println("+----------+----------------------+----------+");
+    }
+
+    static void searchStudents(){
+        System.out.println("Enter the Id of the student: ");
+        int provId = sc.nextInt();
+
+        boolean found = false;
+
+        for (int i=0; i<count; i++){
+            if(ids[i] == provId){
+                System.out.println("ID = " + ids[i] + " Name = " + names[i]  + " Age = " + age[i]);
+                found = true;
+                searchIndex = i;
+                break;
+            }
+        }
+
+        if(!found){
+            System.out.println("Student not found.");
+        }
     }
 }
