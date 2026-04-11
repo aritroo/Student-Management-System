@@ -9,8 +9,6 @@ public class StudentManagementSystem {
 
     static Scanner sc = new Scanner(System.in);
 
-    static int searchIndex = 0;
-
     public static void main(String[] args) {
 
         showMenu();
@@ -50,7 +48,7 @@ public class StudentManagementSystem {
                     break;
 
                 case 4:
-                    System.out.println("Delete Student is pending.");
+                    deleteStudent();
                     break;
 
                 case 5:
@@ -67,7 +65,7 @@ public class StudentManagementSystem {
 
     static void addStudent(){
 
-        //Scanner sc = new Scanner(System.in);
+       
 
         System.out.println("You have selected to add student...... ");
 
@@ -129,7 +127,7 @@ public class StudentManagementSystem {
         age[count] = tempAge;
 
         count++;
-        System.out.println("count => " + count);
+
     }
 
     static Boolean validateId(int id){
@@ -183,7 +181,6 @@ public class StudentManagementSystem {
             if(ids[i] == provId){
                 System.out.println("ID = " + ids[i] + " Name = " + names[i]  + " Age = " + age[i]);
                 found = true;
-                searchIndex = i;
                 break;
             }
         }
@@ -191,5 +188,40 @@ public class StudentManagementSystem {
         if(!found){
             System.out.println("Student not found.");
         }
+    }
+
+    static void deleteStudent(){
+        System.out.println("DELETE STUDENT ");
+        System.out.println("Enter the Id of the student: ");
+
+        int provId = sc.nextInt();
+
+        if(count == 0){
+            System.out.println("Nothing to delete. ");
+            return;
+        }
+
+        int arrayIndex = 0;
+
+        for(int i=0; i<count; i++){
+            if(ids[i] == provId){
+                arrayIndex = i;
+                break;
+            }
+        }
+
+        //shift the array elements to left
+        ids[arrayIndex] = ids[arrayIndex + 1];
+        ids[arrayIndex + 1 ] = ids[arrayIndex + 2];
+
+        names[arrayIndex] = names[arrayIndex + 1];
+        names[arrayIndex + 1 ] = names[arrayIndex + 2];
+
+        age[arrayIndex] = age[arrayIndex + 1];
+        age[arrayIndex + 1] = age[arrayIndex + 2];
+
+        //reduce the count
+        count --;
+
     }
 }
