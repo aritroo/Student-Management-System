@@ -65,7 +65,7 @@ public class StudentManagementSystem {
 
     static void addStudent(){
 
-        //Scanner sc = new Scanner(System.in);
+       
 
         System.out.println("You have selected to add student...... ");
 
@@ -127,7 +127,7 @@ public class StudentManagementSystem {
         age[count] = tempAge;
 
         count++;
-        System.out.println("count => " + count);
+
     }
 
     static Boolean validateId(int id){
@@ -222,6 +222,6 @@ public class StudentManagementSystem {
 
         //reduce the count
         count --;
-        System.out.println("count => " + count);
+
     }
 }
