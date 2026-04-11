@@ -9,8 +9,6 @@ public class StudentManagementSystem {
 
     static Scanner sc = new Scanner(System.in);
 
-    static int searchIndex = 0;
-
     public static void main(String[] args) {
 
         showMenu();
@@ -183,7 +181,6 @@ public class StudentManagementSystem {
             if(ids[i] == provId){
                 System.out.println("ID = " + ids[i] + " Name = " + names[i]  + " Age = " + age[i]);
                 found = true;
-                searchIndex = i;
                 break;
             }
         }
@@ -204,15 +201,24 @@ public class StudentManagementSystem {
             return;
         }
 
+        int arrayIndex = 0;
+
+        for(int i=0; i<count; i++){
+            if(ids[i] == provId){
+                arrayIndex = i;
+                break;
+            }
+        }
+
         //shift the array elements to left
-        ids[searchIndex] = ids[searchIndex + 1];
-        ids[searchIndex + 1 ] = ids[searchIndex + 2];
+        ids[arrayIndex] = ids[arrayIndex + 1];
+        ids[arrayIndex + 1 ] = ids[arrayIndex + 2];
 
-        names[searchIndex] = names[searchIndex + 1];
-        names[searchIndex + 1 ] = names[searchIndex + 2];
+        names[arrayIndex] = names[arrayIndex + 1];
+        names[arrayIndex + 1 ] = names[arrayIndex + 2];
 
-        age[searchIndex] = age[searchIndex + 1];
-        age[searchIndex + 1] = age[searchIndex + 2];
+        age[arrayIndex] = age[arrayIndex + 1];
+        age[arrayIndex + 1] = age[arrayIndex + 2];
 
         //reduce the count
         count --;
