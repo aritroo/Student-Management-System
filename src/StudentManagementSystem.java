@@ -50,7 +50,7 @@ public class StudentManagementSystem {
                     break;
 
                 case 4:
-                    System.out.println("Delete Student is pending.");
+                    deleteStudent();
                     break;
 
                 case 5:
@@ -191,5 +191,31 @@ public class StudentManagementSystem {
         if(!found){
             System.out.println("Student not found.");
         }
+    }
+
+    static void deleteStudent(){
+        System.out.println("DELETE STUDENT ");
+        System.out.println("Enter the Id of the student: ");
+
+        int provId = sc.nextInt();
+
+        if(count == 0){
+            System.out.println("Nothing to delete. ");
+            return;
+        }
+
+        //shift the array elements to left
+        ids[searchIndex] = ids[searchIndex + 1];
+        ids[searchIndex + 1 ] = ids[searchIndex + 2];
+
+        names[searchIndex] = names[searchIndex + 1];
+        names[searchIndex + 1 ] = names[searchIndex + 2];
+
+        age[searchIndex] = age[searchIndex + 1];
+        age[searchIndex + 1] = age[searchIndex + 2];
+
+        //reduce the count
+        count --;
+        System.out.println("count => " + count);
     }
 }
